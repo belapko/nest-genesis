@@ -4,7 +4,10 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
-    origin: true,
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
     // origin: ['https://vue-genesis.vercel.app'],
     // methods: ['GET', 'POST', 'OPTIONS'],
     // allowedHeaders: ['X-Client-Id', 'Content-Type', 'Authorization'],
