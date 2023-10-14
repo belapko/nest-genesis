@@ -5,11 +5,13 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
+  // Получение токена аутентификации с amoCRM
   @Get('/oauth')
   async getAuth(): Promise<{ access_token: string; base_domain: string }> {
     return await this.appService.getAuth();
   }
 
+  // Пост запрос для отправки Entity сущности на amoCRM
   @Post('/entity/:domain/:entity')
   postEntity(
     @Headers() headers,
