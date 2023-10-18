@@ -10,8 +10,13 @@ exports.AppService = void 0;
 const common_1 = require("@nestjs/common");
 const axios_1 = require("axios");
 let AppService = class AppService {
-    async getAuth() {
-        const { data } = await axios_1.default.get('https://test.gnzs.ru/oauth/get-token.php');
+    async getAuth(headers) {
+        const { data } = await axios_1.default.get('https://test.gnzs.ru/oauth/get-token.php', {
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Client-Id': headers['x-client-id'],
+            },
+        });
         return data;
     }
     async postEntity(headers, domain, entity) {

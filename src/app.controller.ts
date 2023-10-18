@@ -7,8 +7,10 @@ export class AppController {
 
   // Получение токена аутентификации с amoCRM
   @Get('/oauth')
-  async getAuth(): Promise<{ access_token: string; base_domain: string }> {
-    return await this.appService.getAuth();
+  async getAuth(
+    @Headers() headers,
+  ): Promise<{ access_token: string; base_domain: string }> {
+    return await this.appService.getAuth(headers);
   }
 
   // Пост запрос для отправки Entity сущности на amoCRM

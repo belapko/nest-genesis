@@ -1,5 +1,5 @@
 export declare class AppService {
-    getAuth(): Promise<{
+    getAuth(headers: Headers): Promise<{
         access_token: string;
         base_domain: string;
     }>;

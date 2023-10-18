@@ -11,11 +11,18 @@ interface TBody {}
 
 @Injectable()
 export class AppService {
-  async getAuth(): Promise<{ access_token: string; base_domain: string }> {
+  async getAuth(
+    headers: Headers,
+  ): Promise<{ access_token: string; base_domain: string }> {
     const { data } = await axios.get<{
       access_token: string;
       base_domain: string;
-    }>('https://test.gnzs.ru/oauth/get-token.php');
+    }>('https://test.gnzs.ru/oauth/get-token.php', {
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Client-Id': headers['x-client-id'],
+      },
+    });
     return data;
   }
 

@@ -19,8 +19,8 @@ let AppController = class AppController {
     constructor(appService) {
         this.appService = appService;
     }
-    async getAuth() {
-        return await this.appService.getAuth();
+    async getAuth(headers) {
+        return await this.appService.getAuth(headers);
     }
     postEntity(headers, domain, entity) {
         return this.appService.postEntity(headers, domain, entity);
@@ -29,8 +29,9 @@ let AppController = class AppController {
 exports.AppController = AppController;
 __decorate([
     (0, common_1.Get)('/oauth'),
+    __param(0, (0, common_1.Headers)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], AppController.prototype, "getAuth", null);
 __decorate([
