@@ -15,12 +15,7 @@ export class AppService {
     const { data } = await axios.get<{
       access_token: string;
       base_domain: string;
-    }>('https://test.gnzs.ru/oauth/get-token.php', {
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Client-Id': 31334466,
-      },
-    });
+    }>('https://test.gnzs.ru/oauth/get-token.php');
     return data;
   }
 
